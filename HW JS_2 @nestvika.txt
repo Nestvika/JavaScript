@@ -50,6 +50,17 @@ Task 3**
 
 Примечание: ВСЕ задания выполнять не обязательно, если вам люто сложно. Но ПЕРВОЕ - прям надо всем:)
 
+1. enterprises.forEach (function(item) {
+    const amount = item.departments.reduce((total, item) => total + item.employees_count, 0);
+    console.log (`${item.name} (${amount} сотрудников)`);
+    item.departments.forEach (function(item) {
+        console.log (`${item.name} (${(item.employees_count)} сотрудников)`);
+    });
+});
+
+
+2. 
+
 
 
 Task 4****

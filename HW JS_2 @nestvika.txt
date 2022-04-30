@@ -1,0 +1,62 @@
+Task 1.
+
+Написать функцию, которая найдет и выведет в консоль юзеров, зарегистрированных 09.10.2021 и 10.10.2021). Массив в task1.txt
+
+
+let loginUser09 = users.filter(item => item.registrationDate === '09.10.2021');
+console.log(loginUser09);
+
+let loginUser10 = users.filter(item => item.registrationDate === '10.10.2021');
+console.log(loginUser10);
+
+Task 2*
+
+Откройте в VSCode task2.json файл. Скопируйте из него JSONку, вставьте в свой код (присвоив в переменную).
+
+Дан массив объектов. Каждый объект является идентификационной карточкой человека. Нам нужно хранить только уникальные значения в этом массиве. Реализуйте функцию, которая будет выполнять эту работу.
+
+const arrayUnique = [...new Map(array.map(item =>
+    [item['name'], item])).values()];
+  
+  console.log(arrayUnique);
+
+
+Task 2*** Реализуйте считывание из JSONки из файла task2.json с помощью, например, модуля fs. для дальнейшего использования в функции, описанной в задании
+
+const fs = require('fs');
+const http = require('http');
+
+const hostname = '127.0.0.1';
+const port = 4000;
+
+const server = http.createServer((req, res) => {
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'application/json');
+    let rawdata = fs.readFileSync('D:/task2.json');
+    let array = JSON.parse(rawdata);
+    const arrayUniqueByKey = [...new Map(array.map(item =>
+        [item['name'], item])).values()];
+    fs.writeFileSync('uniqCards.json', JSON.stringify(arrayUniqueByKey));
+    res.end();
+});
+
+    server.listen(port, hostname, () => {
+        console.log('Server running at http://${hostname}:${port}/');
+            });
+
+
+Task 3**
+В файле task3.txt найдете структуру компании и задания, необходимые выполнить.
+
+Примечание: ВСЕ задания выполнять не обязательно, если вам люто сложно. Но ПЕРВОЕ - прям надо всем:)
+
+
+
+Task 4****
+
+В файле task4.txt вы найдете разноуровневый массив объектов. Очень похожий на массив из 3го задания, только количество вложенностей может быть не ограничено. 
+
+Задание: написать функцию: 
+
+Функция строит древовидный список компании.
+При ее вызове в консоль должен вывестись список подразделений компании с указанием количества сотрудников и с соблюдение вложенности подразделений.
